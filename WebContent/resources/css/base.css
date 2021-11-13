@@ -1,0 +1,19 @@
+:root {
+	--primary-color: #26a65b;
+	--secondary-color: #fff;
+	--text-color: #000;
+	--container-width: 1320px; 
+}
+
+* {
+	box-sizing: inherit;
+}
+
+html {
+	/* 62.5% =) 10px =) 1rem = 10px, 1.1rem=11px;         100% = 16px*/
+	font-size: 62.5%;
+	line-height: 1.7;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	scroll-behavior: smooth;
+}
