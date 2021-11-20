@@ -119,7 +119,7 @@
 							class="fas fa-user header__nav--icon"></i>
 					</a> -->
 					 
-					 <a href="/user/sign-in" class="header__nav-user"> <i
+					 <a href="./login.htm" class="header__nav-user"> <i
 							class="fas fa-user header__nav--icon"></i>
 					</a> 
 
@@ -130,10 +130,8 @@
 							<li class="subnav-user-item"><a href="/user/logout" class>Đăng
 									xuất</a></li> {{else}} -->
 
-							<li class="subnav-user-item"><a href="/user/sign-in" class>Đăng
-									nhập</a></li>
-							<li class="subnav-user-item"><a href="/user/sign-up" class>Đăng
-									ký</a></li> 
+							<li class="subnav-user-item"><a href="./profile.htm" class>Profile</a></li>
+							<li class="subnav-user-item"><a href="./logout.htm" class>Đăng xuất</a></li> 
 						</ul>
 					</li>
 					<li class="nav-list-key__item" style="display: flex;"><a

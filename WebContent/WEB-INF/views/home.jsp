@@ -4,6 +4,7 @@
 
 <!-- START: SLIDER -->
     <!-- Slider -->
+   
     <section class="slider-section" style="margin-top:2px">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->

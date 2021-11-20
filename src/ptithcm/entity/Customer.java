@@ -21,8 +21,7 @@ public class Customer {
 	private String phone;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "sex")
-	private boolean sex;
+	
 	@Column(name = "avatar")
 	private String avatar;
 
@@ -66,19 +65,26 @@ public class Customer {
 		this.email = email;
 	}
 
-	public boolean isSex() {
-		return sex;
-	}
-
-	public void setSex(boolean sex) {
-		this.sex = sex;
-	}
+	
 
 	public String getAvatar() {
 		return avatar;
 	}
 
+	public Customer() {
+		
+	}
+
 	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public Customer(String name, String address, String phone, String email, String avatar) {
+		
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
 		this.avatar = avatar;
 	}
 

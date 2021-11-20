@@ -16,8 +16,10 @@
 			http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
 	<!-- Spring MVC Annotation -->
-	<context:annotation-config />
-	<mvc:annotation-driven/>
+     <context:annotation-config />
+    <mvc:resources location="/resources/" mapping="/resources/**"
+      cache-period="31556926" />
+	 <mvc:annotation-driven/>
 	
 	<!-- Cấu hình view -->
 	<bean id="viewResolver" 
@@ -25,6 +27,14 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
    	
    	<!-- Cấu hình package chứa các controller -->
-	<context:component-scan base-package="ptithcm.controller"/>
+	<context:component-scan base-package="ptithcm.controller,ptithcm.bean"/>
+	
+	<!-- Cấu hình interceptor --> 
+	<mvc:interceptors>  	
+		 <mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<bean class="ptithcm.interceptor.Interceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
