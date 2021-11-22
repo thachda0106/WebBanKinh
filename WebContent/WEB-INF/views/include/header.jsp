@@ -130,7 +130,7 @@
 							<li class="subnav-user-item"><a href="/user/logout" class>Đăng
 									xuất</a></li> {{else}} -->
 
-							<li class="subnav-user-item"><a href="./profile.htm" class>Profile</a></li>
+							<li class="subnav-user-item"><a href="./profile.htm" class>Thông tin cá nhân</a></li>
 							<li class="subnav-user-item"><a href="./logout.htm" class>Đăng xuất</a></li> 
 						</ul>
 					</li>

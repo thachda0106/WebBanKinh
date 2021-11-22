@@ -19,3 +19,7 @@
  	font-weight: bold;
  	color: #f1f1f1;
  }
+
+.table-responsive tr th {
+	background-color: #4950573b;
+}

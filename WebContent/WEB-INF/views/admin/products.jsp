@@ -4,6 +4,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,8 +152,11 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Thông Tin cá nhân</span></a>
                         </li>
                         <li class="sidebar-item selected"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="admin/products.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
-                                    class="hide-menu">Sản phẩm</span></a></li>
+                                href="admin/products/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
+                                    class="hide-menu">Sản phẩm</span></a></li>                       
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="admin/category/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
+                                    class="hide-menu">Danh mục</span></a></li>
 
                     </ul>
 
@@ -221,17 +225,19 @@
                 <!-- ============================================================== -->
              <jsp:useBean id="pagedListHolder" scope="request"
 				type="org.springframework.beans.support.PagedListHolder" />
-			<c:url value="admin/products.htm" var="pagedLink">
+			<c:url value="admin/products/index.htm" var="pagedLink">
 				<c:param name="p" value="~" />
 			</c:url>
                 <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">	
+                    	<span style="color: red; font-style: italic; font-size: 16px;"> ${message}</span>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title" style="color: #1e88e5;">Danh sách sản phẩm</h4>
+                                <h4 class="card-title" style="color: #1e88e5;">Danh sách sản phẩm</h4> 
                                 <h6 class="card-subtitle">  </h6>
                                 <div class="table-responsive">
+                                	<button type="button" class="btn btn-success mb-2"> <a href="admin/products/add.htm"> Thêm </a> </button>
 									<table class="table user-table" style="text-align: center" >
                                         <thead>
                                             <tr>
@@ -246,18 +252,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	<c:forEach var="p" items="${pagedListHolder.pageList}">
+                                        	<c:forEach var="pd" items="${pagedListHolder.pageList}">
                                             <tr>   
-                                            	<td>${p.id}</td>
-                                                <td>${p.name}</td>
-                                                <td>${p.price}</td>
-                                                <td>${p.discount}</td>       
-                                                <td>${p.category.name}</td>        
-                                                <td>${p.quantity}</td>                                         
-                                                <td>${p.description}</td>                                      
-												<td><button type="button" class="btn btn-success"> <a href="#"> Thêm </a> </button></td>    
-												<td><button type="button" class="btn btn-danger">Xóa</button></td>   
-												<td><button type="button" class="btn btn-info">Sửa</button></td>   												
+                                            	<td>${pd.id}</td>
+                                                <td>${pd.name}</td>
+                                                <td> <fmt:formatNumber pattern="###,###,### VND"  value="${pd.price}"  type="currency" groupingUsed = "true" maxFractionDigits = "0"/> </td>
+                                                <td> <fmt:formatNumber value="${pd.discount}" type="percent" /> </td>       
+                                                <td>${pd.category.name}</td>        
+                                                <td>${pd.quantity}</td>                                         
+                                                <td>${pd.description}</td> 
+												<td> <a href="admin/products/${pd.id}.htm?linkEdit"><button type="button"  class="btn btn-info"> <i class="fas fa-edit" style="font-size:16px;"></i> Sửa</button></a> </td>                                          
+												<td>  <button type="button" onclick="CheckDelete('admin/products/${pd.id}.htm?linkDelete')"  class="btn btn-danger"> <i class="fas fa-trash-alt" style="font-size:16px;"></i> Xóa</button></td>   
+												<td> <a href="admin/products/${pd.id}.htm?linkImg"><button type="button"  class="btn btn-success"> <i class="far fa-images" style="font-size:16px;"></i> Ảnh</button></a> </td>                                          
+                                    			
+     
+                                            
                                             </tr>
                                         	</c:forEach>
 
@@ -324,5 +333,16 @@
     <!--Custom JavaScript -->
     <script src="resources/assets/js/pages/dashboards/dashboard1.js"></script>
     <script src="resources/assets/js/custom.js"></script>
+    <script type="text/javascript">
+
+    function CheckDelete(link) {
+		var select = confirm("Bạn có chắc muốn xóa danh mục này không ?");
+		if(select != false){
+			window.location = link;
+		}
+		
+		
+	} 
+    </script>   
 </body>
 </html>

@@ -4,7 +4,6 @@
 
 <!-- START: SLIDER -->
     <!-- Slider -->
-   
     <section class="slider-section" style="margin-top:2px">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -53,8 +52,41 @@
 
     <!-- END: SLIDER -->
 
-	<div class = "container-fluid" style="height: 1000px; width: 100%; background-color: aqua;"> 
-		<h1> Content for the home page! </h1>
+
+		<div class="section-title">
+				<h1 class="ml-3 mr-3">mắt kính hàng hiệu - gọng kính cận - tròng kính chính hãng</h1>
+		</div>
+	<div class="list-products container-fluid">
+		<div class="wrapper-items container">
+		
+			<c:forEach var="pd" items="${products}" >
+				<div class="card">
+					<div class="card-item">
+						<a href="${pd.id}.htm"> <img class="card-img-top"
+							src="resources/imgs/product-imgs/${pd.productImgs['0'].img}" width="100%"
+							height="auto" alt="Card image cap">
+						</a>
+						<div class="card-btn">
+							<a href="${pd.id}.htm">Xem sản phẩm</a>
+						</div>
+					</div>
+					<div class="card-body mt-4">
+						<h5 class="card-title text-truncate ">${pd.name}</h5>
+						<p class="card-price">
+						<span style="text-decoration: line-through;"><fmt:formatNumber pattern="###,###,### đ"  value="${pd.price}"  type="currency" groupingUsed = "true" maxFractionDigits = "0"/></span>
+						<span style="color: red;"><fmt:formatNumber pattern="###,###,### đ"  value="${pd.price - pd.price*pd.discount}"  type="currency" groupingUsed = "true" maxFractionDigits = "0"/></span>
+						
+						</p>
+					</div>
+				</div>
+
+			</c:forEach>		
+		</div>
+		
+		<div class="btn-home"> 
+		<a href="products.htm"><button class="btn btn-info" style="font-size: 16px; font-weight: 600; background-color: var(--primary-color);"> Xem tất cả</button></a>
+		</div>
 	</div>
+
 
 <%@include file="/WEB-INF/views/include/footer.jsp" %>

@@ -430,6 +430,48 @@
 	flex-wrap: wrap;
 	
 }
-
-
 /* test END: FOOTER */
+
+/* Start: content */
+.section-title{
+	display:flex;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right:auto;
+	justify-content: center;
+	align-items: center;
+}
+	
+.section-title > h1 {
+	text-transform: uppercase;
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.section-title:after {
+	content: "";
+	background-color: #ddd;
+	width: 290px;
+	height: 2px;
+	
+}
+.section-title:before {
+	content: "";
+	background-color: #ddd;
+	width: 290px;
+	height: 2px;
+}
+/*End: content */
+
+.list-products {
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.btn-home {
+	position: absolute;
+	right: 430px;
+	bottom: 0;
+	
+}

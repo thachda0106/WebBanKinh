@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.entity.Customer;
+import ptithcm.entity.Product;
 import ptithcm.entity.UserAccount;
 
 @Controller
@@ -48,18 +49,32 @@ public class LoginController {
 					httpSession.setAttribute("curUser", user.getCustomer().getId());
 					httpSession.setAttribute("isAdmin", "false");
 					model.addAttribute("user", user.getCustomer().getName());
+					List<Product> products = this.getProducts();
+					model.addAttribute("products", products);
 					return "/home";
 				}
 			}
 		}
-		model.addAttribute("alert","Sai tên đăng nhập hoặc mật khẩu");
+		model.addAttribute("alert","Sai tên đăng nhập hoặc mật khẩu!");
 		
 		return "login";
 	}
 	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request) {
+	public String logout(ModelMap model , HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		List<Product> products = this.getProducts();
+		model.addAttribute("products", products);
 		return "/home";
 	}
+	
+	
+	public List<Product> getProducts() {
+		Session session = factory.getCurrentSession();
+		String hql = "  FROM Product as p where p.discount > 0 order by p.discount DESC";
+		Query query = session.createQuery(hql);
+		query.setMaxResults(8);
+		List<Product> list = query.list();
+		return list;
+	}	
 }

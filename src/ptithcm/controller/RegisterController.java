@@ -52,6 +52,6 @@ public class RegisterController {
 		}
 		
 		
-		return "";
+		return "/login";
 	}	
 }

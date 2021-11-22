@@ -149,8 +149,11 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Thông Tin cá nhân</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="admin/products.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
+                                href="admin/products/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
                                     class="hide-menu">Sản phẩm</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="admin/category/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
+                                    class="hide-menu">Danh mục</span></a></li>
 
                     </ul>
 
