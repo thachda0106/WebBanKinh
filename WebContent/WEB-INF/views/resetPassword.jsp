@@ -16,20 +16,21 @@
               <div class="panel-body">
                 <div class="text-center">
                   <h3><i class="fa fa-lock fa-4x"></i></h3>
-                  <h2 class="text-center">Forgot Password?</h2>
-                  <p>You can reset your password here.</p>
+                  <h2 class="text-center">Quên mật khẩu?</h2>
+                  <p>Nhập vào tài khoản của bạn để lấy lại mật khẩu</p>
                   <div class="panel-body">
     
                     <form action="reset-password.htm" id="register-form" role="form" autocomplete="off" class="form" method="post">
-    
+    					<p class="text-danger" name="message" id="txt-alert" >${message }</p> 
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                          <input id="email" name="email" placeholder="email address" class="form-control"  type="email">
+                          <input id="username" name="username" placeholder="username" class="form-control"  type="text">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Lấy lại mật khẩu" type="submit">
+                        
                       </div>
                       
                       <input type="hidden" class="hide" name="token" id="token" value=""> 

@@ -12,16 +12,16 @@ public class Mailer {
 	@Autowired
 	JavaMailSender mailer;
 	
-	public void send(String email) {
+	public void send(String email, String tittle, String message) {
 		try {
-			String mailBody = "Mật khẩu của bạn đã được đặt lại thành 12345, bạn có thể sửa lại mật khẩu trong profile.";
+			
 			MimeMessage mail = mailer.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(mail,true,"utf-8");
-			helper.setFrom("laptrinhweb010@gmail.com", "Cửa hàng mắt kính HTT");
+			helper.setFrom("laptrinhweb010@gmail.com", "Cửa hàng mắt kính XXSTORE");
 			helper.setTo(email);
 			helper.setReplyTo("laptrinhweb010@gmail.com");
-			helper.setSubject("Đặt lại mật khẩu");
-			helper.setText(mailBody);
+			helper.setSubject(tittle);
+			helper.setText(message);
 			
 			mailer.send(mail);
 		}

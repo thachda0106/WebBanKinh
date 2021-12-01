@@ -41,7 +41,7 @@ public class ProfileEditController {
 		for (UserAccount user : users) {
 			if (user.getCustomer().getId() == (Integer) (request.getAttribute("curUser"))) {
 				model.addAttribute("name", user.getCustomer().getName());
-				model.addAttribute("mail", user.getCustomer().getEmail());
+				model.addAttribute("email", user.getCustomer().getEmail());
 				model.addAttribute("phone", user.getCustomer().getPhone());
 				model.addAttribute("address", user.getCustomer().getAddress());
 				model.addAttribute("username", user.getUsername());

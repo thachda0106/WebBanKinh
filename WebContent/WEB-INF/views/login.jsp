@@ -33,7 +33,7 @@
    <!-- Register Form -->
     </form>
     <form action = "registerC.htm" method="post" id="register" hidden>
-     
+      <p class="text-danger" name="alert" id="txt-alert" >${alert }</p> 
       <input type="text"  class="fadeIn second" name="username" placeholder="username" required="required">
      
       <input type="password"  class="fadeIn second" name="password" placeholder="password" required="required">
