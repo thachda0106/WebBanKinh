@@ -72,10 +72,11 @@
           <div class="col-md-8">
             <input class="btn btn-primary" value="Lưu thay đổi" type="submit" id="btn-save">
     		<input class = "btn btn-default" value="Reset" type="reset"> 
-            <input class="btn btn-default" value="Hủy" href="./profile.htm" type="submit">
+            <a class = "btn btn-default" href="./profile.htm">Quay về</a>
           </div>
         </div>
       </form>
+      
     </div>
   </div>
 </div>

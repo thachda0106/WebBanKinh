@@ -79,6 +79,16 @@ public class Customer {
 		this.avatar = avatar;
 	}
 
+	public Customer(int id, String name, String address, String phone, String email, String avatar) {
+		
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.avatar = avatar;
+	}
+
 	public Customer(String name, String address, String phone, String email, String avatar) {
 		
 		this.name = name;

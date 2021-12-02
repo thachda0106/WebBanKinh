@@ -27,10 +27,7 @@ public class ProfileController {
 	@RequestMapping("/profile")
 	public String profile(ModelMap model, HttpSession request) {
 		request.getAttribute("curUser");
-		Session session = factory.getCurrentSession();
-		String hql = "From Customer ";
-		Query query = session.createQuery(hql);
-		List<Customer> customers = query.list();
+		List<Customer> customers = this.getCustomers();
 		for (Customer customer : customers) {
 			if (customer.getId() == (Integer) (request.getAttribute("curUser"))) {
 				model.addAttribute("name", customer.getName());
@@ -42,5 +39,12 @@ public class ProfileController {
 		return "profile";
 	}
 	
+	public List<Customer> getCustomers(){
+		Session session = factory.getCurrentSession();
+		String hql = "From Customer ";
+		Query query = session.createQuery(hql);
+		List<Customer> customers = query.list();
+		return customers;
+	}
 	
 }
