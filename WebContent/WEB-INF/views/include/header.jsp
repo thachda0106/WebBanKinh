@@ -27,10 +27,10 @@
 <!--END: BOOSTRAP -->
 
 <!--START: MY CSS -->
-<link rel="stylesheet" href="resources/css/reset.css">
-<link rel="stylesheet" href="resources/css/base.css">
-<link rel="stylesheet" href="resources/css/main.css">
-<link rel="stylesheet" href="resources/css/products.css">
+<link rel="stylesheet" href="/WebBanKinh/resources/css/reset.css">
+<link rel="stylesheet" href="/WebBanKinh/resources/css/base.css">
+<link rel="stylesheet" href="/WebBanKinh/resources/css/main.css">
+<link rel="stylesheet" href="/WebBanKinh/resources/css/products.css">
 <!--END: MY CSS -->
 
 <!--START: FONT -->
@@ -51,7 +51,7 @@
 				<div class="header__nav-logo">
 					<a href="/WebBanKinh/home.htm"" class="nav-logo" ><img
 						style="filter: invert(1);"
-						src="resources/imgs/logo/logospecial.png" alt="XXSTORE" width="200px"
+						src="/WebBanKinh/resources/imgs/logo/logospecial.png" alt="XXSTORE" width="200px"
 						height="auto"></a>
 				</div>
 

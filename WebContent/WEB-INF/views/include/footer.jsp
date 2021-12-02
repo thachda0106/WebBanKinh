@@ -4,26 +4,26 @@
 	  <footer class="footer-wrapper">
 		  <div class="footer-policy row">
 			<div class="footer-policy__item ">
-				<img src="resources/imgs/footer-imgs/shop.png" alt="Shop" class="item__img" width="40px" height="42.8px">
+				<img src="/WebBanKinh/resources/imgs/footer-imgs/shop.png" alt="Shop" class="item__img" width="40px" height="42.8px">
 				<p class="item-content"><Strong>TPHCM</Strong> <br> có hơn 5 chi nhánh</p>
 			</div>
 			<div class="footer-policy__item ">
-				<img src="resources/imgs/footer-imgs/ship.png" alt="Ship" class="item__img" width="40px" height="42.8px">
+				<img src="/WebBanKinh/resources/imgs/footer-imgs/ship.png" alt="Ship" class="item__img" width="40px" height="42.8px">
 				<p class="item-content"><Strong>Freeship</Strong> <br> đơn hàng hơn 500k</p>
 			</div>
 			<div class="footer-policy__item ">
-				<img src="resources/imgs/footer-imgs/policy.png" alt="Policy" class="item__img" width="40px" height="42.8px">
+				<img src="/WebBanKinh/resources/imgs/footer-imgs/policy.png" alt="Policy" class="item__img" width="40px" height="42.8px">
 				<p class="item-content"><Strong>Đo mắt miễn phí</Strong> <br> KTV có nhiều kinh nghiêm</p>
 			</div>
 			<div class="footer-policy__item ">
-				<img src="resources/imgs/footer-imgs/setting.png" alt="repair" class="item__img" width="40px" height="42.8px">
+				<img src="/WebBanKinh/resources/imgs/footer-imgs/setting.png" alt="repair" class="item__img" width="40px" height="42.8px">
 				<p class="item-content"><Strong>Miễn phí</Strong> <br> Sữa chữa trọn đời</p>
 			</div>
 		  </div>
                 <div class="wrapper-footer">
                     <div class="footer__infor">
                         <div class="footer_infor-list col">
-                            <img src="resources/imgs/logo/logospecial.png" alt="XXSTORE" width="150px" height="auto">
+                            <img src="/WebBanKinh/resources/imgs/logo/logospecial.png" alt="XXSTORE" width="150px" height="auto">
                             <p class="xxstore-address">
                                 <span style="color: #333333c7;font-weight: 500;font-size: 14px;"><i class="fas fa-map-marker-alt mr-2"></i>
                                 ĐỊA CHỈ STORE: số 97, đường Man Thiện, TP.HCM</span>

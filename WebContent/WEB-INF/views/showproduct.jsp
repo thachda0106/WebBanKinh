@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" %>
 <%@include file="/WEB-INF/views/include/header.jsp" %>
+
 <div class="wrapper" style="background-color: #f8f8f8"> 
 	<nav class="bread-crumbs mt-2">
 			<a href="/WebsiteBanKinh/home.htm"> <i class="fas fa-home mr-1"></i> Trang chủ </a>
@@ -14,11 +15,11 @@
 		<div class="slider-imgs">
 			<c:forEach var="i" items="${imgs}">
 				<img class = "product-img" onclick="ChangedImg(this)" alt="${product.name }"
-					src="resources/imgs/product-imgs/${i.img}" width="50px" height="auto">
+					src="/WebBanKinh/resources/imgs/product-imgs/${i.img}" width="50px" height="auto">
 			</c:forEach>
 		</div>
 		<div class="col imgs-show ml-4">
-			<img id="show-productimg" alt="Sản phẩm" src="resources/imgs/product-imgs/${imgs['0'].img}" width="600px" height="auto" >
+			<img id="show-productimg" alt="Sản phẩm" src="/WebBanKinh/resources/imgs/product-imgs/${imgs['0'].img}" width="600px" height="auto" >
 		</div>
 	</div>
 	<div class="card-items col-4" style="flex-direction: column;">
@@ -60,7 +61,7 @@
 				<div class="card">
 					<div class="card-item">
 						<a href="${pd.id}.htm"> <img class="card-img-top"
-							src="resources/imgs/product-imgs/${pd.productImgs['0'].img}" width="100%"
+							src="/WebBanKinh/resources/imgs/product-imgs/${pd.productImgs['0'].img}" width="100%"
 							height="auto" alt="Card image cap">
 						</a>
 						<div class="card-btn">
