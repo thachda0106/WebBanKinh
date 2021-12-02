@@ -10,7 +10,7 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container" style="padding-top: 60px;">
-	<h1 class="page-header">Profile</h1>
+	<h1 class="page-header">Trang cá nhân</h1>
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-4 col-sm-6 col-xs-12">
@@ -25,7 +25,7 @@
 		<!-- edit form column -->
 		<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
 
-			<h3>Personal info</h3>
+			<h3>Thông tin cá nhân</h3>
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
 					<label class="col-lg-3 control-label">Tên người dùng: </label>
