@@ -34,6 +34,8 @@ public class ProfileController {
 				model.addAttribute("mail", customer.getEmail());
 				model.addAttribute("phone", customer.getPhone());
 				model.addAttribute("address", customer.getAddress());
+				model.addAttribute("useravatar",customer.getAvatar());
+				System.out.println("tesst" + customer.getAvatar());
 			}
 		}
 		return "profile";

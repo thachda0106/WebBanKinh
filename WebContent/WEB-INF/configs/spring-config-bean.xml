@@ -23,4 +23,7 @@
  <bean id="uploadimage" class="ptithcm.bean.UploadImage" >
  	<property name="basePath" value="D:\LTW\WebBanKinh\WebContent\resources\imgs\product-imgs" />
  </bean>
+  <bean id="uploadavatar" class="ptithcm.bean.UploadAvatar" >
+ 	<property name="basePath" value="D:\LTW\WebBanKinh\WebContent\resources\imgs\icons" />
+ </bean>
 </beans>

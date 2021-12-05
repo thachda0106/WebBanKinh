@@ -48,7 +48,7 @@ public class AdminCategoryController {
 	public String add(HttpServletRequest request, ModelMap model ,@Validated @ModelAttribute("category") Category category, BindingResult errors) {
 		int i = this.InsertCategory(category);
 		if(i == 1) {
-			model.addAttribute("message", "Thêm danh mục thành công!");
+			model.addAttribute("message", "ThÃªm danh má»¥c thÃ nh cÃ´ng!");
 			model.addAttribute("category", new Category() );
 		}else {
 			model.addAttribute("category", category);

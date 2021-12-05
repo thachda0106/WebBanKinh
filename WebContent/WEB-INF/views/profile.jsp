@@ -1,52 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="container" style="padding-top: 60px;">
-	<h1 class="page-header">Trang cá nhân</h1>
-	<div class="row">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" %>
+<%@include file="/WEB-INF/views/include/header.jsp" %>
+<div class="wrapper" style="background-color: #f8f8f8"> 
+	<nav class="bread-crumbs mt-2">
+			<a href="/WebsiteBanKinh/home.htm"> <i class="fas fa-home mr-1"></i> Trang chủ </a>
+			<span class="divider" style="font-weight: bold;"><i class="fas fa-chevron-right ml-2" style="font-size: 12px"></i> Trang cá nhân</span>
+	</nav>
+	<hr style="margin-bottom:0px;margin-left:30px; margin-right:30px;">
+</div>
+<div class="container" style="padding: 60px 20px;">
+	<div class="row wrapper-inforus">
 		<!-- left column -->
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="text-center">
-				<img src="resources/imgs/icons/user_1.png"
-					class="avatar img-circle img-thumbnail" alt="avatar" width="250px"
-						height="auto">
-				<h6>Upload a different photo...</h6>
-				<input type="file" class="text-center center-block well well-sm">
+		      	<c:choose>
+		      		<c:when test="${not empty useravatar}">
+		      		   <img src="resources/imgs/icons/${useravatar}" class="avatar img-circle img-thumbnail" alt="avatar" width="200px" height="auto">  		
+		      		</c:when>
+		      		<c:otherwise>
+		         	   <img src="resources/imgs/icons/avatar-default.png" class="avatar img-circle img-thumbnail" alt="avatar">  		
+		      		</c:otherwise>
+		      	
+		      	</c:choose>
+		      
 			</div>
 		</div>
 		<!-- edit form column -->
 		<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
 
-			<h3>Thông tin cá nhân</h3>
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" style="padding: 15px 0;">
 				<div class="form-group">
-					<label class="col-lg-3 control-label">Tên người dùng: </label>
-					<div class="col-lg-8">
-						<p class="col-lg-3 control-label">${name}</p>
+					<label class="col-lg-3 control-label"> <i class="fas fa-user"></i> Tên người dùng: </label>
+					<div class="col-lg">
+						<span style="margin-left:30px; width: 200px; font-size: 16px;">${name}</span>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-lg-3 control-label">Địa chỉ: </label>
-					<div class="col-lg-8">
-						<p class="col-lg-3 control-label">${address}</p>
-					</div>
+				<div class="form-group" style="display: flex; align-items: center; ">
+					<label class="col-lg-3 control-label"><i class="fas fa-map-marker-alt mr-2"></i>Địa chỉ: </label>
+					<div class="col-lg">
+						<p style="font-size:16px; padding-left: 15px">${address}</p>
+					</div> 
 				</div>
 				<div class="form-group">
-					<label class="col-lg-3 control-label">Số điện thoại: </label>
+					<label class="col-lg-3 control-label"><i class="fas fa-phone mr-2"></i>Số điện thoại: </label>
 					<div class="col-lg-8">
 						<p class="col-lg-3 control-label">${phone}</p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-lg-3 control-label">Email: </label>
+					<label class="col-lg-3 control-label"><i class="fas fa-envelope-square mr-2"></i>Email: </label>
 					<div class="col-lg-8">
 						<p class="col-lg-3 control-label">${mail}</p>
 					</div>
@@ -65,3 +67,5 @@
 		</div>
 	</div>
 </div>
+
+<%@include file="/WEB-INF/views/include/footer.jsp" %>

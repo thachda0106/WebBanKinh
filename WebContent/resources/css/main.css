@@ -475,3 +475,19 @@
 	bottom: 0;
 	
 }
+
+
+.wrapper-inforuser * {
+	font-size: 16px;
+	
+}
+
+.form-horizontal .control-label {
+	font-size: 16px;
+	padding-top: unset;
+	padding-left:15px;
+}
+
+.form-horizontal .text-center{
+	font-size: 16px;
+}

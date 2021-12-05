@@ -24,6 +24,13 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 <!--END: BOOSTRAP -->
 
 <!--START: MY CSS -->
@@ -118,20 +125,29 @@
 						<i
 							class="fas fa-user header__nav--icon"></i>
 					</a> -->
-					 
-					 <a href="./login.htm" class="header__nav-user"> <i
-							class="fas fa-user header__nav--icon"></i>
-					</a> 
+					 	<c:choose>
+							<c:when test="${not empty curUser}">
+								<a href="./profile.htm" class="header__nav-user"> <i
+									class="fas fa-user header__nav--icon"></i>
+								</a>
 
+							</c:when>
+								<c:otherwise>
+									<a href="./login.htm" class="header__nav-user"> <i
+									class="fas fa-user header__nav--icon"></i>
+								</a>
+								</c:otherwise>
+				        	</c:choose>
 						<ul class="header-subnav-user">
-<!-- 							{{# neu login }}
-							<li class="subnav-user-item"><a href="/user/profile" class>Thông
-									tin cá nhân</a></li>
-							<li class="subnav-user-item"><a href="/user/logout" class>Đăng
-									xuất</a></li> {{else}} -->
-
-							<li class="subnav-user-item"><a href="./profile.htm" class>Thông tin cá nhân</a></li>
-							<li class="subnav-user-item"><a href="./logout.htm" class>Đăng xuất</a></li> 
+							<c:choose>
+								<c:when test="${not empty curUser}">
+									<li class="subnav-user-item"><a href="./profile.htm">Thông tin cá nhân</a></li>
+									<li class="subnav-user-item"><a href="./logout.htm">Đăng xuất</a></li> 
+								</c:when>
+								<c:otherwise>
+									<li class="subnav-user-item"><a href="./login.htm">Đăng nhập / Đăng ký</a></li> 
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</li>
 					<li class="nav-list-key__item" style="display: flex;"><a
