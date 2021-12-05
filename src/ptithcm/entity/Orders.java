@@ -1,11 +1,14 @@
 package ptithcm.entity;
 
+
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,17 +17,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="orders")
 public class Orders {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(columnDefinition = "id")
 	private int id;
+	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@Column(name = "datetime")
 	private Date datetime;
+	@Column(name = "status")
 	private boolean status;
 	
 	@ManyToOne
@@ -40,6 +48,9 @@ public class Orders {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
 	public Date getDatetime() {
 		return datetime;
 	}
@@ -64,4 +75,16 @@ public class Orders {
 	public void setLineitems(Collection<LineItems> lineitems) {
 		this.lineitems = lineitems;
 	}
+	public Orders(int id, Date datetime, boolean status, Customer customer, Collection<LineItems> lineitems) {
+
+		this.id = id;
+		this.datetime = datetime;
+		this.status = status;
+		this.customer = customer;
+		this.lineitems = lineitems;
+	}
+	public Orders() {
+
+	}
+	
 }

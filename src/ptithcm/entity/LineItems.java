@@ -1,4 +1,5 @@
 package ptithcm.entity;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -47,6 +48,15 @@ public class LineItems implements Serializable {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public LineItems(Product product, Orders orders, int quantity) {
+		this.product = product;
+		this.orders = orders;
+		this.quantity = quantity;
+	}
+
+	public LineItems() {
 	}
 
 }

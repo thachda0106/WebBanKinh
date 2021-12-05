@@ -127,13 +127,13 @@
 					</a> -->
 					 	<c:choose>
 							<c:when test="${not empty curUser}">
-								<a href="./profile.htm" class="header__nav-user"> <i
+								<a href="/WebBanKinh/profile.htm" class="header__nav-user"> <i
 									class="fas fa-user header__nav--icon"></i>
 								</a>
 
 							</c:when>
 								<c:otherwise>
-									<a href="./login.htm" class="header__nav-user"> <i
+									<a href="/WebBanKinh/login.htm" class="header__nav-user"> <i
 									class="fas fa-user header__nav--icon"></i>
 								</a>
 								</c:otherwise>
@@ -141,17 +141,17 @@
 						<ul class="header-subnav-user">
 							<c:choose>
 								<c:when test="${not empty curUser}">
-									<li class="subnav-user-item"><a href="./profile.htm">Thông tin cá nhân</a></li>
-									<li class="subnav-user-item"><a href="./logout.htm">Đăng xuất</a></li> 
+									<li class="subnav-user-item"><a href="/WebBanKinh/profile.htm">Thông tin cá nhân</a></li>
+									<li class="subnav-user-item"><a href="/WebBanKinh/logout.htm">Đăng xuất</a></li> 
 								</c:when>
 								<c:otherwise>
-									<li class="subnav-user-item"><a href="./login.htm">Đăng nhập / Đăng ký</a></li> 
+									<li class="subnav-user-item"><a href="/WebBanKinh/login.htm">Đăng nhập / Đăng ký</a></li> 
 								</c:otherwise>
 							</c:choose>
 						</ul>
 					</li>
 					<li class="nav-list-key__item" style="display: flex;"><a
-						href="/cart" class="header__nav-shopping"
+						href="/WebBanKinh/cart.htm" class="header__nav-shopping"
 						style="display: flex; flex-direction: row;"> <i
 							class="fas fa-shopping-cart
                             header__nav--icon"

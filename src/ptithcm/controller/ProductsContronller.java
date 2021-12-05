@@ -6,10 +6,12 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ptithcm.entity.LineItems;
+import ptithcm.entity.Orders;
 import ptithcm.entity.Product;
 import ptithcm.entity.ProductImgs;
 
@@ -150,6 +154,76 @@ public class ProductsContronller {
 		return "showproduct";
 	}
 	
+	@RequestMapping("/id={id}/quantity={sl}.htm")
+	public String addToCart(ModelMap model, HttpSession request, @PathVariable("id") int id, @PathVariable("sl") int sl ) {
+		int order_id = (Integer) request.getAttribute("od_user");
+		
+		Orders od = this.getOrder(order_id);
+		Product p = this.getProduct(id);
+		model.addAttribute("product", p);
+		model.addAttribute("imgs", this.getProductImgs(id));
+		model.addAttribute("list", this.getProducts(p.getCategory().getName()));
+		LineItems litem = this.findLineItem(id, order_id);
+		if(litem==null) {
+			LineItems newLineitem = new LineItems(p,od, sl);
+			int check = this.insertLineitem(newLineitem);
+			if(check ==1 ) {
+				model.addAttribute("mess_addtocart_true", "Đã Thêm Vào Giỏ hàng thành công!");
+			}
+			else {
+				model.addAttribute("mess_addtocart_false", "Thêm vào giỏ hàng thất bại!");
+			}
+		}
+		else {
+			if(litem.getProduct().getQuantity()<(litem.getQuantity()+sl)) {
+				litem.setQuantity(litem.getProduct().getQuantity());
+			}
+			else {
+				litem.setQuantity(litem.getQuantity()+sl);
+			}
+			
+			
+			Session session = factory.openSession();
+			Transaction t = session.beginTransaction();
+
+			try {
+				session.update(litem);
+				t.commit();
+				System.out.println("Cập nhật thành công");
+				model.addAttribute("mess_addtocart_true", "Đã Thêm Vào Giỏ hàng thành công!");
+			} catch (Exception e) {
+				t.rollback();
+				System.out.println("Cập nhật thất bại");
+				model.addAttribute("mess_addtocart_false", "Thêm vào giỏ hàng thất bại!");
+			} finally {
+				session.close();
+			}
+		}
+		
+		
+		
+		return "showproduct";
+	}
+	
+	public LineItems findLineItem(int p_id, int od_id){
+		Session session = factory.getCurrentSession();
+		String hql = "FROM LineItems as litem Where litem.product.id = :p_id and litem.orders.id =:od_id";
+		Query query = session.createQuery(hql);
+		try {
+			
+			
+			query.setParameter("p_id", p_id);
+			query.setParameter("od_id", od_id);
+			LineItems litem = (LineItems)query.list().get(0);
+		}
+		catch(Exception e) {
+			return null;
+		}
+		
+		session.clear();
+		return (LineItems)query.list().get(0);
+	}
+	
 	public Product getProduct(int id) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM Product as p Where p.id = :id ";
@@ -205,5 +279,37 @@ public class ProductsContronller {
 		List<Product> list = query.list();
 		return list;
 	}
+	
+	public Integer insertLineitem(LineItems litem) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();		
+
+		try {
+			session.save(litem);
+			t.commit();
+			System.out.println("Tạo lineitem mới thành công!");
+		} catch (Exception e) {
+			t.rollback();
+			return 0;
+		} finally {
+			session.close();
+		}
+		return 1;
+	}
+	
+	public void createLineitems(Product p, Orders od, int sl) {
+		
+	}
+	
+	public Orders getOrder(int id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM Orders as od Where od.id = :id ";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		Orders od = (Orders)query.list().get(0);
+		session.clear();
+		return od;
+	}
+	
 
 }
