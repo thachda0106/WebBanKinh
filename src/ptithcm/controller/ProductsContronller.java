@@ -21,6 +21,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.entity.LineItems;
 import ptithcm.entity.Orders;
@@ -48,6 +49,39 @@ public class ProductsContronller {
 		return "products";
 	}
 	
+	@RequestMapping(value = "/products-{name}.htm")
+	public String productsCategori(ModelMap model, HttpServletRequest request, @PathVariable("name") String name) {
+		List<Product> products = this.getProductsC(name);
+		PagedListHolder pagedListHolder = new PagedListHolder(products);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
+		pagedListHolder.setPage(page);
+		pagedListHolder.setMaxLinkedPages(5);
+		pagedListHolder.setPageSize(12);
+		model.addAttribute("count", products.size());
+		model.addAttribute("filter", "default");
+		model.addAttribute("stt", "default");
+		model.addAttribute("pagedListHolder", pagedListHolder);
+		return "products";
+	}	
+	
+	@RequestMapping(value = "/products-search", params = "search")
+	public String productsSearch(ModelMap model, HttpServletRequest request, @RequestParam("key") String key) {
+		List<Product> products = this.getProductsK(key);
+		if(products.size() == 0) {
+			model.addAttribute("message", "Không tìm thấy sản phẩm nào!");
+		}
+		System.out.println(key +" "+ products.size());
+		PagedListHolder pagedListHolder = new PagedListHolder(products);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
+		pagedListHolder.setPage(page);
+		pagedListHolder.setMaxLinkedPages(5);
+		pagedListHolder.setPageSize(12);
+		model.addAttribute("count", products.size());
+		model.addAttribute("filter", "default");
+		model.addAttribute("stt", "default");
+		model.addAttribute("pagedListHolder", pagedListHolder);
+		return "products";
+	}	
 	@RequestMapping(value = "/products.htm", params = "asc")
 	public String productASC(ModelMap model, HttpServletRequest request) {
 		List<Product> products = this.getProducts();
@@ -70,6 +104,8 @@ public class ProductsContronller {
 		model.addAttribute("pagedListHolder", pagedListHolder);
 		return "products";
 	}
+	
+	
 	
 	@RequestMapping(value = "/products.htm", params = "desc")
 	public String productDESC(ModelMap model, HttpServletRequest request) {
@@ -168,7 +204,7 @@ public class ProductsContronller {
 			LineItems newLineitem = new LineItems(p,od, sl);
 			int check = this.insertLineitem(newLineitem);
 			if(check ==1 ) {
-				model.addAttribute("mess_addtocart_true", "Đã Thêm Vào Giỏ hàng thành công!");
+				model.addAttribute("mess_addtocart_true", "Thêm vào giỏ hành thành công!");
 			}
 			else {
 				model.addAttribute("mess_addtocart_false", "Thêm vào giỏ hàng thất bại!");
@@ -189,7 +225,7 @@ public class ProductsContronller {
 			try {
 				session.update(litem);
 				t.commit();
-				System.out.println("Cập nhật thành công");
+				System.out.println("Cập nhật thành công!");
 				model.addAttribute("mess_addtocart_true", "Đã Thêm Vào Giỏ hàng thành công!");
 			} catch (Exception e) {
 				t.rollback();
@@ -199,9 +235,6 @@ public class ProductsContronller {
 				session.close();
 			}
 		}
-		
-		
-		
 		return "showproduct";
 	}
 	
@@ -210,8 +243,6 @@ public class ProductsContronller {
 		String hql = "FROM LineItems as litem Where litem.product.id = :p_id and litem.orders.id =:od_id";
 		Query query = session.createQuery(hql);
 		try {
-			
-			
 			query.setParameter("p_id", p_id);
 			query.setParameter("od_id", od_id);
 			LineItems litem = (LineItems)query.list().get(0);
@@ -241,12 +272,29 @@ public class ProductsContronller {
 		List<Product> list = query.list();
 		return list;
 	}
-	
-	public List<Product> getProducts(String name) {
+	public List<Product> getProductsC(String name) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM Product as p where p.category.name = :name";
 		Query query = session.createQuery(hql);
-		query.setMaxResults(4);
+		query.setParameter("name",name );
+		List<Product> list = query.list();
+		return list;
+	}
+	
+	public List<Product> getProductsK(String name) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM Product as p where p.name LIKE :name";
+		Query query = session.createQuery(hql);
+		query.setParameter("name","%" + name + "%");
+		List<Product> list = query.list();
+		return list;
+	}
+	
+	public List<Product> getProducts(String name) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM Product as p where p.category.name = :name ORDER BY newid()";
+		Query query = session.createQuery(hql);
+		query.setMaxResults(4); 
 		query.setParameter("name",name );
 		List<Product> list = query.list();
 		return list;

@@ -40,27 +40,32 @@
 			<span style="color: var(--primary-color); font-size: 20px; font-weight: 600;"><fmt:formatNumber pattern="###,###,### đ" value="${product.price - product.price*product.discount}" type="currency" groupingUsed="true" maxFractionDigits="0" /></span>				 
 			 </p>
 			
-			<p style="font-size: 16px; margin-top: 5px;" >Mô tả: ${product.description}</p>
+			<p style="font-size: 16px; margin-top: 5px;" >Loại: ${product.category.name} <br> Mô tả: ${product.description}</p>
 		</div>
 		<div class="btn-orders">	
 			<div class="btn-quantity" style="display: flex;"> 
 				<input type="button" onclick="CheckQuantity(this)" name="sub" value="-" style="width: 25px;height: 30px;font-size: 16px; font-weight: 600; align-self: center" > 
 				<input type="text" id="QuantityProduct"  value="1" min="1" inputmode="text" style="max-width: 48px; text-align: center; height: 30px; font-size: 16px; border: 1px solid rgb(0 0 0/ 90%);align-self: center">
 				<input type="button" onclick="CheckQuantity(this)" name="plus" value="+" style="width: 25px;height: 30px;font-size: 16px; font-weight: 600;align-self: center" >  			
-				<a href="/WebBanKinh/id=${product.id}/quantity=1.htm?order" id="LinkOrder"><button class="btn bt-info ml-4" style="font-size: 16px; font-weight: 600; background-color: var(--primary-color); color: #fff;"> <i class="fab fa-shopify"></i> Thêm vào giỏ hàng</button></a>
+				<c:choose>
+					<c:when test="${not empty curUser }">
+						<a href="/WebBanKinh/id=${product.id}/quantity=1.htm?order" id="LinkOrder"><button class="btn bt-info ml-4" style="font-size: 16px; font-weight: 600; background-color: var(--primary-color); color: #fff;"> <i class="fab fa-shopify"></i> Thêm vào giỏ hàng</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="/WebBanKinh/login.htm"><button class="btn bt-info ml-4" style="font-size: 16px; font-weight: 600; background-color: var(--primary-color); color: #fff;"> <i class="fab fa-shopify"></i> Thêm vào giỏ hàng</button></a>
+					</c:otherwise>
+				</c:choose>
 			</div>		
 		</div>
 		
 	</div>
-	
 
-	
 </div>
 
 
 <div style="background-color: #f6f6f6">
 		<div class="section-title" style="margin-top: unset;">
-				<h1 class="ml-3 mr-3">SẢN PHẨM LIÊN QUAN</h1>
+				<h1 class="ml-3 mr-3">SẢN PHẨM CÙNG LOẠI</h1>
 		</div>
 	<div class="list-products container-fluid" style="margin-bottom: unset">
 		<div class="wrapper-items container">
@@ -97,6 +102,7 @@
 <%@include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script type="text/javascript">
+	var $ = document.getElementById("show-productimg");
 	var $$ = document.getElementById("QuantityProduct");
 	var $$$ = document.getElementById("LinkOrder");
 	function ChangedImg(obj){

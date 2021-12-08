@@ -129,7 +129,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="resources/assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Thach STONE
+                                <img src="resources/assets/images/users/1.jpg" alt="user" class="profile-pic me-2">${AdminName }
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -154,10 +154,6 @@
                                 href="admin/home.htm" aria-expanded="false">
                                 <i class="mdi me-2 mdi-home-variant"></i><span class="hide-menu">Trang chủ</span></a>
                         </li>                      
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link "
-                                href="pages-profile.html" aria-expanded="false">
-                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Thông Tin cá nhân</span></a>
-                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="admin/products/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
                                     class="hide-menu">Sản phẩm</span></a></li>

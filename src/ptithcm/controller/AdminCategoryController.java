@@ -48,9 +48,10 @@ public class AdminCategoryController {
 	public String add(HttpServletRequest request, ModelMap model ,@Validated @ModelAttribute("category") Category category, BindingResult errors) {
 		int i = this.InsertCategory(category);
 		if(i == 1) {
-			model.addAttribute("message", "ThÃªm danh má»¥c thÃ nh cÃ´ng!");
+			model.addAttribute("message", "Thêm danh mục thành công!");
 			model.addAttribute("category", new Category() );
 		}else {
+			model.addAttribute("message", "Thêm danh mục thất bại!");
 			model.addAttribute("category", category);
 		}
 		
@@ -74,6 +75,7 @@ public class AdminCategoryController {
 			model.addAttribute("btnStatus", "btnAdd");
 			model.addAttribute("category", new Category());
 		}else {
+			model.addAttribute("message", "Chỉnh sửa danh mục không thành công!");
 			model.addAttribute("btnStatus", "btnEdit");
 			model.addAttribute("category", category);
 		}
@@ -149,7 +151,13 @@ public class AdminCategoryController {
 	public Integer InsertCategory(Category c) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
-
+		
+		List<Category> categories = this.getCategories();
+		for (Category category : categories) {
+			if(category.getName().equals(c.getName())) {
+				return 0;
+			}
+		}
 		try {
 			session.save(c);
 			t.commit();
@@ -182,7 +190,12 @@ public class AdminCategoryController {
 	public Integer UpdateCategory(Category c) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
-
+		List<Category> categories = this.getCategories();
+		for (Category category : categories) {
+			if(category.getName().equals(c.getName())) {
+				return 0;
+			}
+		}
 		try {
 			session.update(c);
 			t.commit();

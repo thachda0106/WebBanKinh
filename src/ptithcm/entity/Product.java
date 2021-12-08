@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "product")
@@ -20,14 +25,22 @@ public class Product {
 	@Column(name = "id")
 	private int id;
 	@Column(name = "name")
+	@NotEmpty(message = "Không được để trống tên sản phẩm!")
 	private String name;
 	@Column(name = "description")
+	@NotEmpty(message = "Không được để trống mô tả!")
 	private String description;
 	@Column(name = "price")
+	@NotNull(message = "Không được để trống giá tiền!")
+	@Min(value = 0, message = "Giá tiền không hợp lệ!")
 	private int price;
 	@Column(name = "discount")
+	@DecimalMin(value = "0.0", message = "Giá tiền không hợp lệ!")
+	@DecimalMax(value = "1.0", message = "Giá tiền không hợp lệ!")
 	private float discount;
 	@Column(name = "quantity")
+	@NotNull(message = "Không được để trống số lương sản phẩm!")
+	@Min(value = 1, message = "số sản phẩm phải > 0!")
 	private int quantity;
 	
 	@ManyToOne

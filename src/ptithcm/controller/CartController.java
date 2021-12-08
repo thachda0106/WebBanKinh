@@ -68,9 +68,6 @@ public class CartController {
 		List<LineItems> litems = this.getLineItemsOfOrder(newOrderId);
 		model.addAttribute("list_lineItems", litems);
 		model.addAttribute("MessComfirm", "Đã đặt hàng thành công! Thông tin đơn hàng sẽ được gửi về mail. Chúc Bạn 1 ngày tốt lành!");
-		
-		
-		
 		return "cart";
 	}
 	

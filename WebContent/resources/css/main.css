@@ -177,6 +177,7 @@
 .header__nav-subnav > li {
 	width: 100%;
 	border-bottom: 0.5px #ddd dashed;
+	background-color: #f1f1f1;
 }
 
 .header__nav-subnav > li:last-child {
@@ -490,4 +491,24 @@
 
 .form-horizontal .text-center{
 	font-size: 16px;
+}
+
+
+.form-custom {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: row;
+
+}
+
+.infor-store {
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 10px;
+}
+
+.infor-store .infor-icon {
+	font-size: 20px;
+	color: red;
 }

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "category")
@@ -19,6 +20,7 @@ public class Category {
 	private int id;
 	
 	@Column(name = "name")
+	@NotEmpty(message = "Không được để trống tên danh mục!")
 	private String name;
 	
 	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)

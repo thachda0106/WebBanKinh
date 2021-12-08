@@ -47,15 +47,13 @@ public class LoginController {
 					httpSession.setAttribute("curUser", user.getCustomer().getId());
 					httpSession.setAttribute("isAdmin", "true");
 					model.addAttribute("user", user.getCustomer().getName());
-					return "/admin/home";
+					return "redirect:/admin/home.htm";
 				} else {
 					httpSession.setAttribute("curUser", user.getCustomer().getId());
 					httpSession.setAttribute("isAdmin", "false");
 					model.addAttribute("user", user.getCustomer().getName());
-					List<Product> products = this.getProducts();
-					model.addAttribute("products", products);
 					this.getOrderId(model, httpSession);
-					return "/home";
+					return "redirect:/home.htm";
 				}
 			}
 		}
@@ -67,24 +65,10 @@ public class LoginController {
 	public String logout(ModelMap model , HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		List<Product> products = this.getProducts();
-		model.addAttribute("products", products);
-		return "/home";
+		return "redirect:/home.htm";
 	}
 	
-	
-	
-	
-	
-	
-	public List<Product> getProducts() {
-		Session session = factory.getCurrentSession();
-		String hql = "  FROM Product as p where p.discount > 0 order by p.discount DESC";
-		Query query = session.createQuery(hql);
-		query.setMaxResults(8);
-		List<Product> list = query.list();
-		return list;
-	}
+
 	public void getOrderId(ModelMap model, HttpSession request) {
 		int id_user = (Integer) request.getAttribute("curUser");
 		int number = 0;

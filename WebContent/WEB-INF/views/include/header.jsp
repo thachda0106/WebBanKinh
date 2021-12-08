@@ -48,7 +48,6 @@
 <!--END: FONT -->
 </head>
 <body>
-
 	<header class="header">
 		<div class="header__wrap">
 			<div class="header__hotline">
@@ -56,7 +55,7 @@
 			</div>
 			<div class="header__nav">
 				<div class="header__nav-logo">
-					<a href="/WebBanKinh/home.htm"" class="nav-logo" ><img
+					<a href="/WebBanKinh/home.htm" class="nav-logo" ><img
 						style="filter: invert(1);"
 						src="/WebBanKinh/resources/imgs/logo/logospecial.png" alt="XXSTORE" width="200px"
 						height="auto"></a>
@@ -67,52 +66,34 @@
 					<li class="header__nav-item"><a href="/WebBanKinh/products.htm"> SẢN PHẨM
 							<i class="fas fa-angle-down item-icon"></i>
 					</a>
-
-<!-- 						<ul
+						<ul
 							class="header__nav-subnav
                         header__nav-item--subnav-SP">
-							<li><a href="/categorys/hang-moi">HÀNG MỚI <i
+							<c:forEach var="c" items="${applicationScope.categories}">
+							<li><a href="/WebBanKinh/products-${c.name}.htm">${c.name}<i
 									class="fas
                                     fa-angle-right sub-icon"></i></a>
-							</li>
-							<li><a href="/categorys/ao-thun">ÁO THUN <i
-									class="fas
-                                    fa-angle-right sub-icon"></i></a>
-							</li>
-							<li><a href="/categorys/quan">QUẦN <i
-									class="fas
-                                    fa-angle-right sub-icon"></i></a>
-							</li>
-							<li><a href="/categorys/ao-khoac">ÁO KHOÁC <i
-									class="fas
-                                    fa-angle-right sub-icon"></i></a>
-							</li>
-							<li><a href="/categorys/giay">GIÀY <i
-									class="fas
-                                    fa-angle-right sub-icon"></i></a>
-							</li>
-							<li><a href="/categorys/non">NÓN <i
-									class="fas
-                                    fa-angle-right sub-icon"></i></a>
-							</li>
-						</ul> -->
+							</li>    
+							
+							</c:forEach>                   	
+						</ul>
 						</li>
 
 
 					<li class="header__nav-item"><a href="/news">TIN TỨC</a></li>
-					<li class="header__nav-item"><a href="/shop-system">HỆ
+					<li class="header__nav-item"><a href="/WebBanKinh/store-system.htm">HỆ
 							THỐNG CỬA HÀNG </a></li>
 				</ul>
 
 				<ul class="header__nav-list-key">
-					<li class="nav-list-key__item"><a href="/search"
+					<li class="nav-list-key__item"><a href="/WebBanKinh/products.htm"
 						class="header__nav-search"> <i
 							class="fas fa-search header__nav--icon"></i>
 					</a>
-						<form method="GET" action="/search/products" class="search-wrap">
-							<input type="search" name="name" id="name"
+						<form method="POST" action="/WebBanKinh/products-search.htm" class="search-wrap">
+							<input type="search" name="key" id="key"
 								placeholder="Nhập từ khóa..." class="header__search-input">
-							<button type="submit" class="btn input-search-icon">
+							<button type="submit" name="search" class="btn input-search-icon">
 								<i class="fas fa-search header__nav--icon"></i>
 
 							</button>

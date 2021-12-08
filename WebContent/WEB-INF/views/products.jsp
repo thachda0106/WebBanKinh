@@ -39,7 +39,7 @@
 	
 		</div>	
 
-
+	<h1 style="font-size: 20px;">${message}</h1>
 	<div class="list-products container-fluid">
 		    <jsp:useBean id="pagedListHolder" scope="request" type="org.springframework.beans.support.PagedListHolder" />
 			<c:url value="products.htm?${filter}" var="pagedLink">
