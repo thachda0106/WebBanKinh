@@ -11,8 +11,8 @@
 	<div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active underlineHover" id="login-btn"> Đăng nhập </h2>
-    <h2 class="inactive underlineHover" id="register-btn">Đăng ký</h2>
+    <h2 class=" ${error? 'inactive': 'active' } underlineHover" id="login-btn"> Đăng nhập </h2>
+    <h2 class="${!error? 'inactive': 'active' } underlineHover" id="register-btn">Đăng ký</h2>
 
     <!-- Icon -->
     <div class="fadeIn first">
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Login Form -->
-    <form action = "loginC.htm" method="post" id="login">
+    <form action = "loginC.htm" method="post" id="login" ${error? 'hidden': '' }>
       <p class="text-danger" name="alert" id="txt-alert" >${alert }</p>  
       <input type="text"  class="fadeIn second" name="username" placeholder="username" required="required">
       
@@ -32,7 +32,7 @@
    
    <!-- Register Form -->
     </form>
-    <form action = "registerC.htm" method="post" id="register" hidden>
+    <form action = "registerC.htm" method="post" id="register" } ${!error? 'hidden': '' }>
       <p class="text-danger" name="alert" id="txt-alert" >${alert }</p> 
       <input type="text"  class="fadeIn second" name="username" placeholder="username" required="required">
      

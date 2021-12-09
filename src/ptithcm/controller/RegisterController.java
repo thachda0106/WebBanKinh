@@ -49,10 +49,12 @@ public class RegisterController {
 		for (UserAccount user : users) {
 			if(user.getUsername().equals(username)) {
 				model.addAttribute("alert","Tên đăng nhập đã tồn tại");	
+				model.addAttribute("error", true);
 				return "/login";
 				
 			}else if(user.getCustomer().getEmail().equals(email)) {
 				model.addAttribute("alert","Email đã được sử dụng. Vui lòng chọn email khác");	
+				model.addAttribute("error", true);
 				return "/login";
 			}
 		}

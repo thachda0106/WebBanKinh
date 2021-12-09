@@ -38,6 +38,7 @@ public class PasswordResetController {
 		Query query = session.createQuery(hql);
 		List<UserAccount> users = query.list();
 		for (UserAccount user : users) {
+			System.out.println(username + user.getUsername());
 			if(user.getUsername().equals(username)) {
 				try {
 					String message = "Mật khẩu cũ của bạn là: " + user.getPassword() + "\nBạn có thể đổi lại mật khẩu mới trong Trang cá nhân."
@@ -45,15 +46,14 @@ public class PasswordResetController {
 					String tittle = "Lấy lại mật khẩu cũ";
 					mailer.send(user.getCustomer().getEmail(), tittle, message);
 					model.addAttribute("message","Gửi email thành công. Vui lòng kiểm tra email bạn đã đăng ký để lấy lại mật khẩu.");
+					return "resetPassword";
 				}
 				catch(Exception ex) {
 					
 				}
-			}else {
-				model.addAttribute("message","Tài khoản bạn nhập vào không tồn tại");
 			}
 		}
-		
+		model.addAttribute("message","Tài khoản bạn nhập vào không tồn tại");
 		
 		return "resetPassword";
 	}
