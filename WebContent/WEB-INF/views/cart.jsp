@@ -16,8 +16,8 @@
 	<hr style="margin-bottom: 0px; margin-left: 30px; margin-right: 30px;">
 </div>
 <div class="container" style="font-size: 14px">
-	<div class="row" style="margin-top: 30px">
-		<div class="col-xs-4 panel panel-danger" >
+	<div class="row col-md-12" style="margin-top: 30px">
+		<div class="col-md-4 panel panel-danger" >
 			<h2 class="text-center my-5" style="font-size: 24px; color:#28a745; font-weight:600">Thông tin Thanh Toán</h2>
 			<div id="control-display1" style="display: block">
 			<form class="form-horizontal" role="form">
@@ -90,7 +90,7 @@
 			</div>
 
 			</div>
-		<div class="col-xs-8">
+		<div class="col-md-8">
 		<p style="color: blue; font-size:16px; font-weight: 700">${MessComfirm}</p>
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -165,12 +165,12 @@
 				</div>
 				<div class="panel-footer">
 					<div class="row justify-content-center align-items-center">
-						<div class="col-xs-9">
+						<div class="col-md-9">
 							<h4 class="text-right">
 								Thành Tiền: <strong class="total">$50.00</strong>
 							</h4>
 						</div>
-						<form class="col-xs-3" action="/WebBanKinh/cart.htm">
+						<form class="col-md-3" action="/WebBanKinh/cart.htm">
 							<button type="submit" class="btn btn-success btn-block" name="comfirm">
 								Đặt Hàng</button>
 						</form>

@@ -153,6 +153,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="admin/category/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
                                     class="hide-menu">Danh mục</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="admin/orders/index.htm" aria-expanded="false"><i class="fas me-2 fa-tasks"></i><span
+                                    class="hide-menu">Orders</span></a></li>
 
                     </ul>
 

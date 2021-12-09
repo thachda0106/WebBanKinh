@@ -34,6 +34,8 @@ public class Orders {
 	private Date datetime;
 	@Column(name = "status")
 	private boolean status;
+	@Column(name = "total")
+	private int total;
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
@@ -75,16 +77,23 @@ public class Orders {
 	public void setLineitems(Collection<LineItems> lineitems) {
 		this.lineitems = lineitems;
 	}
-	public Orders(int id, Date datetime, boolean status, Customer customer, Collection<LineItems> lineitems) {
-
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public Orders(int id, Date datetime, boolean status, int total, Customer customer,
+			Collection<LineItems> lineitems) {
 		this.id = id;
 		this.datetime = datetime;
 		this.status = status;
+		this.total = total;
 		this.customer = customer;
 		this.lineitems = lineitems;
 	}
 	public Orders() {
-
 	}
+	
 	
 }

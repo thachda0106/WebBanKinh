@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="tag" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +51,6 @@
         <!--START: FONT -->
         <!--END: FONT -->
 </head>
-
 <body>
 
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -119,7 +122,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="resources/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> <span>${applicationScope.AdminName}</span> 
+                                <img src="resources/assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Thach STONE
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -140,19 +143,24 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
-                        <li class="sidebar-item selected"> <a class="sidebar-link waves-effect waves-dark sidebar-link "
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link "
                                 href="admin/home.htm" aria-expanded="false">
                                 <i class="mdi me-2 mdi-home-variant"></i><span class="hide-menu">Trang chủ</span></a>
                         </li>                      
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link "
+                                href="pages-profile.html" aria-expanded="false">
+                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Thông Tin cá nhân</span></a>
+                        </li>
+                        <li class="sidebar-item "> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="admin/products/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
-                                    class="hide-menu">Sản phẩm</span></a></li>
+                                    class="hide-menu">Sản phẩm</span></a></li>                       
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="admin/category/index.htm" aria-expanded="false"><i class="mdi me-2 mdi-sunglasses"></i><span
                                     class="hide-menu">Danh mục</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item selected"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="admin/orders/index.htm" aria-expanded="false"><i class="fas me-2 fa-tasks"></i><span
                                     class="hide-menu">Orders</span></a></li>
+
                     </ul>
 
                 </nav>
@@ -161,7 +169,7 @@
             <!-- End Sidebar scroll-->
             <div class="sidebar-footer">
                 <div class="row">
-                    <div class="col-4 link-wrap">
+                    <div class="col-4 link-wrap">	
                         <!-- item-->
                         <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i
                                 class="ti-settings"></i></a>
@@ -192,11 +200,14 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Admin Home</h3>
+                        <h3 class="page-title mb-0 p-0">Admin Orders</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item" style="display: flex; align-items: center;"><a href="#">Home</a>
+                                    <span style= "color: #99abb4; font-size: 16px;" ><i class ="mdi mdi-chevron-right"></i> Orders </span>
+                                    
+                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -208,86 +219,86 @@
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
+            
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Sales chart -->
+                <!-- Start Page Content -->
                 <!-- ============================================================== -->
+             <jsp:useBean id="pagedListHolder" scope="request"
+				type="org.springframework.beans.support.PagedListHolder" />
+			<c:url value="admin/orders/index.htm" var="pagedLink">
+				<c:param name="p" value="~" />
+			</c:url>
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-8">
+                    <!-- column -->
+                    <div class="col-sm-12">	
+                    	<span style="color: red; font-style: italic; font-size: 16px;"> ${message}</span>
                         <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <div>
-                                                <h3 class="card-title">Sales Overview</h3>
-                                                <h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>
-                                            </div>
-                                            <div class="ms-lg-auto mx-sm-auto mx-lg-0">
-                                                <ul class="list-inline d-flex">
-                                                    <li class="me-4">
-                                                        <h6 class="text-success"><i
-                                                                class="fa fa-circle font-10 me-2 "></i>Ample</h6>
-                                                    </li>
-                                                    <li>
-                                                        <h6 class="text-info"><i
-                                                                class="fa fa-circle font-10 me-2"></i>Pixel</h6>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="amp-pxl" style="height: 360px;">
-                                            <div class="chartist-tooltip"></div>
-                                        </div>
-                                    </div>
+                                <h4 class="card-title" style="color: #1e88e5;">Danh sách sản phẩm</h4> 
+                                <h6 class="card-subtitle">  </h6>
+                                <div class="table-responsive">
+                                <form action="admin/orders/index.htm" >
+                                	<input type="date" id="dt" style="text-indent: -500px;height:25px; width:200px" onchange="mydateStart1();" hidden/>
+									<input name="strDateStart" type="text" id="ndt" value="${dateStartMonth }"  onclick="mydateStart();" />
+									<input type="button" Value="Chọn ngày" onclick="mydateStart();" />
+									<span>Đến ngày</span>
+									<input  type="date" id="dt1" style="text-indent: -500px;height:25px; width:200px" onchange="mydateEnd1();" hidden/>
+									<input name="strDateEnd" type="text" id="ndt1" value="${dateNow }"  onclick="mydateEnd();" />
+									<input type="button" Value="Chọn ngày" onclick="mydateEnd();" />
+									<button name="search"><i class="fas fa-search"></i></button>
+								</form>
+								<div class="col-xs-12">
+								<input id="total1" hidden value="0" name="total"/>
+								<h4 class="text-right">
+									Tổng: <strong class="total" >0</strong>
+								</h4>
+						</div>
+									<table class="table user-table" style="text-align: center" >
+                                        <thead>
+                                            <tr>
+                                            	<th class="border-top-0">#</th>
+                                                <th class="border-top-0">Tên Khách hàng</th>
+                                                <th class="border-top-0">Ngày giờ</th>
+                                                <th class="border-top-0">Thành tiền</th>                                                                                   
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	<c:forEach var="od" items="${pagedListHolder.pageList}">
+                                            <tr>   
+                                            	<td>${od.id}</td>
+                                                <td>${od.customer.name}</td>
+                                                <td> <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${od.datetime}" /></p></td>
+                                                <td> 
+                                                <input class="price" hidden value="${od.total}" />
+                                                 <fmt:formatNumber pattern="###,###,### VND"  value="${od.total}"  type="currency" groupingUsed = "true" maxFractionDigits = "0"/> 
+                                                 </td>       
+     
+                                            
+                                            </tr>
+                                        	</c:forEach>
+
+                                        </tbody>
+                                    </table>
+                                    <tag:paging pagedListHolder="${pagedListHolder}" pagedLink="${pagedLink}" />
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">Our Visitors </h3>
-                                <h6 class="card-subtitle">Different Devices Used to Visit</h6>
-                                <div id="visitor"
-                                    style="height: 290px; width: 100%; max-height: 290px; position: relative;"
-                                    class="c3">
-                                    <div class="c3-tooltip-container"
-                                        style="position: absolute; pointer-events: none; display: none;">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <hr class="mt-0 mb-0">
-                            </div>
-                            <div class="card-body text-center ">
-                                <ul class="list-inline d-flex justify-content-center align-items-center mb-0">
-                                    <li class="me-4">
-                                        <h6 class="text-info"><i class="fa fa-circle font-10 me-2 "></i>Mobile</h6>
-                                    </li>
-                                    <li class="me-4">
-                                        <h6 class=" text-primary"><i class="fa fa-circle font-10 me-2"></i>Desktop</h6>
-                                    </li>
-                                    <li class="me-4">
-                                        <h6 class=" text-success"><i class="fa fa-circle font-10 me-2"></i>Tablet</h6>
-                                    </li>
-                                </ul>
-                            </div>
+							</div>
                         </div>
                     </div>
                 </div>
-                      </div>
                 <!-- ============================================================== -->
-
-
-
-			
-
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -332,5 +343,57 @@
     <!--Custom JavaScript -->
     <script src="resources/assets/js/pages/dashboards/dashboard1.js"></script>
     <script src="resources/assets/js/custom.js"></script>
+    <script type="text/javascript">
+	
+    function mydateStart()
+    {
+      //alert("");
+    document.getElementById("dt").hidden=false;
+    document.getElementById("ndt").hidden=true;
+    }
+    function mydateStart1()
+    {
+     d=new Date(document.getElementById("dt").value);
+    dt=d.getDate();
+    mn=d.getMonth();
+    mn++;
+    yy=d.getFullYear();
+    document.getElementById("ndt").value=yy+"-"+mn+"-"+dt
+    document.getElementById("ndt").hidden=false;
+    document.getElementById("dt").hidden=true;
+    }
+    function mydateEnd()
+    {
+      //alert("");
+    document.getElementById("dt1").hidden=false;
+    document.getElementById("ndt1").hidden=true;
+    }
+    function mydateEnd1()
+    {
+     d=new Date(document.getElementById("dt1").value);
+    dt=d.getDate();
+    mn=d.getMonth();
+    mn++;
+    yy=d.getFullYear();
+    document.getElementById("ndt1").value=yy+"-"+mn+"-"+dt
+    document.getElementById("ndt1").hidden=false;
+    document.getElementById("dt1").hidden=true;
+    }
+    function tinhTong() {
+		var prices = document.querySelectorAll('.price');
+		total = 0
+		for (i = 0; i < prices.length; i++) {
+			total += Math.ceil(prices[i].value)
+		}
+		var formatter = new Intl.NumberFormat('vi-VN', {
+			style : 'currency',
+			currency : 'VND'
+		});
+
+		document.querySelector('.total').innerHTML = formatter.format(total);
+	}
+	
+	tinhTong()
+    </script>   
 </body>
 </html>

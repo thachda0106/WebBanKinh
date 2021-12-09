@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Web materials/Bản sao của Tai nguyen sinh vien/Tai nguyen sinh vien/lib/Validation/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Trong/Desktop/tài liệu/Lập trình web/Tai nguyen sinh vien/lib/Validation"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
