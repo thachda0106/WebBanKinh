@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+
 <link rel="stylesheet" href="/WebBanKinh/resources/css/news.css">
 
 <!--Container-->
-<div class="container" style="padding: 20px 0;">
+<div class="container mb-4">
 	<!--Start code-->
-	<span style="display: block; height 30px;"></span>
+	<span style="display: block; height: 30px;"></span>
 	<div class="row">
 		<div class="col-12">
 			<!--SECTION START-->
@@ -18,7 +20,7 @@
 						<!--carousel inner-->
 						<div class="carousel-inner">
 							<!--Item slider-->
-							<div class="carousel-item active" style = "max-height: 250px">
+							<div class="carousel-item active" style = "max-height: 460px">
 								<div class=" border-0 rounded-0 text-light overflow zoom">
 									<div class="position-relative">
 										<!--thumbnail img-->
@@ -27,8 +29,7 @@
 												href="https://matkinhsaigon.com.vn/tin-tuc/kinh-phan-cuc-la-gi.html"
 												target="_blank"> <img class="img-fluid w-100"
 												src="resources/imgs/news/article1.png"
-												alt="Bootstrap news template" height="250px">
-												
+												alt="Bootstrap news template">
 											</a>
 										</div>
 										<div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
@@ -49,7 +50,7 @@
 					</div>
 				</div>
 				<!--Start box news-->
-				<div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4 ">
+				<div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
 					<div class="row">
 						<!--news box-->
 						<div class="col-6 pb-1 pt-0 pr-1">
@@ -161,7 +162,7 @@
 						<!--end news box-->
 					</div>
 				</div>
-				
+
 				<!--End box news-->
 			</section>
 	</div>
@@ -192,5 +193,6 @@
 						allowfullscreen></iframe>
 				</div>
 			</div>
-	</div>
-	<%@include file="/WEB-INF/views/include/footer.jsp"%>
+			
+			</div>
+	<%@include file="/WEB-INF/views/include/footer.jsp"%> 
