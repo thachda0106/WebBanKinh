@@ -137,13 +137,24 @@
 							</c:choose>
 						</ul>
 					</li>
-					<li class="nav-list-key__item" style="display: flex;"><a
-						href="/WebBanKinh/cart.htm" class="header__nav-shopping"
-						style="display: flex; flex-direction: row;"> <i
-							class="fas fa-shopping-cart
-                            header__nav--icon"
-							style="line-height: 50px;"></i>
-							<div>
+					<li class="nav-list-key__item" style="display: flex;">
+							<c:choose>
+								<c:when test="${not empty curUser}">
+									<a href="/WebBanKinh/cart.htm" class="header__nav-shopping"
+										style="display: flex; flex-direction: row;"> <i
+										class="fas fa-shopping-cart
+			                            header__nav--icon"
+										style="line-height: 50px;"></i></a>
+							</c:when>
+								<c:otherwise>
+									<a href="/WebBanKinh/login.htm" class="header__nav-shopping"
+										style="display: flex; flex-direction: row;"> <i
+										class="fas fa-shopping-cart
+			                            header__nav--icon"
+										style="line-height: 50px;"></i></a>
+								</c:otherwise>
+							</c:choose>
+							<div style="color: #f1f1f1;">
 								<p class="ml-3"
 									style="margin-bottom: unset; display: flex; flex-direction: column; font-size: 18px;">
 									<strong class="pl-4 pt-2"> Giỏ Hàng</strong> 
@@ -156,7 +167,7 @@
 								</p>
 
 							</div>
-					</a></li>
+					</li>
 				</ul>
 
 			</div>

@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/WebBanKinh/resources/css/news.css">
 
 <!--Container-->
-<div class="container">
+<div class="container" style="padding: 20px 0;">
 	<!--Start code-->
-	<span style="display: block; height: 30px;"></span>
+	<span style="display: block; height 30px;"></span>
 	<div class="row">
-		<div class="col-12 pb-5">
+		<div class="col-12">
 			<!--SECTION START-->
 			<section class="row">
 				<!--Start slider news-->
@@ -22,7 +18,7 @@
 						<!--carousel inner-->
 						<div class="carousel-inner">
 							<!--Item slider-->
-							<div class="carousel-item active" style = "max-height: 460px">
+							<div class="carousel-item active" style = "max-height: 250px">
 								<div class=" border-0 rounded-0 text-light overflow zoom">
 									<div class="position-relative">
 										<!--thumbnail img-->
@@ -31,7 +27,8 @@
 												href="https://matkinhsaigon.com.vn/tin-tuc/kinh-phan-cuc-la-gi.html"
 												target="_blank"> <img class="img-fluid w-100"
 												src="resources/imgs/news/article1.png"
-												alt="Bootstrap news template">
+												alt="Bootstrap news template" height="250px">
+												
 											</a>
 										</div>
 										<div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
@@ -52,7 +49,7 @@
 					</div>
 				</div>
 				<!--Start box news-->
-				<div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
+				<div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4 ">
 					<div class="row">
 						<!--news box-->
 						<div class="col-6 pb-1 pt-0 pr-1">
@@ -195,5 +192,5 @@
 						allowfullscreen></iframe>
 				</div>
 			</div>
-	
+	</div>
 	<%@include file="/WEB-INF/views/include/footer.jsp"%>

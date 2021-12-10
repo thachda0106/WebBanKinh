@@ -15,8 +15,8 @@
 			http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- Cấu hình interceptor --> 
-<!-- 	<mvc:interceptors>  
-		Lọc tất cả các URL
+	<mvc:interceptors>  
+<!-- 		Lọc tất cả các URL
 		<bean class="ptithcm.interceptor.LoggerInterceptor" />
 		
 		Chỉ lọc các URL theo path
@@ -24,7 +24,7 @@
 			<mvc:mapping path="/home/**"/>
 			<mvc:exclude-mapping path="/home/index.htm"/>
 			<bean class="poly.interceptor.LoggerInterceptor" />
-		</mvc:interceptor>
+		</mvc:interceptor> -->
 		
 		 <mvc:interceptor>
 			<mvc:mapping path="/user/**"/>
@@ -33,8 +33,8 @@
 			<mvc:exclude-mapping path="/user/register.htm"/>
 			<mvc:exclude-mapping path="/user/forgot-password.htm"/>
 			<mvc:exclude-mapping path="/user/activate.htm"/>
-			<bean class="poly.interceptor.SecurityInterceptor" />
+			<bean class="ptithcm.interceptor.Interceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 
 </beans>
