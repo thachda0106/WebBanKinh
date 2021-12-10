@@ -68,7 +68,13 @@ public class LoginController {
 		return "redirect:/home.htm";
 	}
 	
-
+	@RequestMapping("/admin/logout")
+	public String Adminlogout(ModelMap model , HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/home.htm";
+	}
+	
 	public void getOrderId(ModelMap model, HttpSession request) {
 		int id_user = (Integer) request.getAttribute("curUser");
 		int number = 0;

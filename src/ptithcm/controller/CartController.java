@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -47,7 +48,7 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="/cart.htm", params="comfirm")
-	public String confirm(ModelMap model, HttpSession request) {
+	public String confirm(ModelMap model, HttpSession request, HttpServletRequest ServletRequest ) {
 		int cus_id = (Integer) request.getAttribute("curUser");
 		Customer customer = this.getUser(cus_id);
 		model.addAttribute("user", customer);
@@ -68,6 +69,7 @@ public class CartController {
 		List<LineItems> litems = this.getLineItemsOfOrder(newOrderId);
 		model.addAttribute("list_lineItems", litems);
 		model.addAttribute("MessComfirm", "Đã đặt hàng thành công! Chúc Bạn 1 ngày tốt lành!");
+		ServletRequest.getServletContext().setAttribute("orderQuantity", 0);
 		return "cart";
 	}
 	
@@ -87,7 +89,7 @@ public class CartController {
 	}
 	
 	@RequestMapping("/cart/{pd_id}/{sl}.htm")
-	public String updateCart(ModelMap model, HttpSession request, @PathVariable("pd_id") int pd_id, @PathVariable("sl") int sl){
+	public String updateCart(ModelMap model, HttpServletRequest ServletRequest  ,HttpSession request, @PathVariable("pd_id") int pd_id, @PathVariable("sl") int sl){
 		int cus_id = (Integer) request.getAttribute("curUser");
 		Customer customer = this.getUser(cus_id);
 		model.addAttribute("user", customer);
@@ -96,13 +98,19 @@ public class CartController {
 		litem.setQuantity(sl);
 		this.updateLineItem(litem);
 		List<LineItems> litems = this.getLineItemsOfOrder(od_id);
+		// 
+		int orderQuantity = 0;
+		for (LineItems lineItems : litems) {
+			orderQuantity += lineItems.getQuantity();
+		}
+		ServletRequest.getServletContext().setAttribute("orderQuantity", orderQuantity);
 		model.addAttribute("list_lineItems", litems);
 		return "cart";
 		
 	}
 	
 	@RequestMapping("/cart/{pd_id}.htm")
-	public String deleteLitem(ModelMap model, HttpSession request, @PathVariable("pd_id") int pd_id) {
+	public String deleteLitem(ModelMap model,HttpServletRequest ServletRequest  , HttpSession request, @PathVariable("pd_id") int pd_id) {
 		int cus_id = (Integer) request.getAttribute("curUser");
 		Customer customer = this.getUser(cus_id);
 		model.addAttribute("user", customer);
@@ -110,8 +118,13 @@ public class CartController {
 		LineItems litem = this.findLineItem(pd_id, od_id);
 
 		this.deleteLineItem(litem);
-			
 		List<LineItems> litems = this.getLineItemsOfOrder(od_id);
+		// 
+		int orderQuantity = 0;
+		for (LineItems lineItems : litems) {
+			orderQuantity += lineItems.getQuantity();
+		}
+		ServletRequest.getServletContext().setAttribute("orderQuantity", orderQuantity);
 		model.addAttribute("list_lineItems", litems);
 		return "cart";
 	}

@@ -28,10 +28,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <!------ Include the above in your HEAD tag ---------->
@@ -149,12 +146,12 @@
 							<div>
 								<p class="ml-3"
 									style="margin-bottom: unset; display: flex; flex-direction: column; font-size: 18px;">
-									<strong class="pl-1"> Giỏ Hàng</strong> 
+									<strong class="pl-4 pt-2"> Giỏ Hàng</strong> 
 <!-- 									<span
 										class="font-weight-normal" style="font-size: 16px;"> (
 										{{session.cart.totalQty}} sản phẩm )</span>  -->
 										<span
-										class="font-weight-normal" style="font-size: 16px;"> (
+										class="font-weight-normal" style="font-size: 16px;"> ( <span style="color: #35dc3ab0; text-decoration: inherit;font-size: 18px; font-weight: 700;">${applicationScope.orderQuantity}</span> 
 										sản phẩm )</span>
 								</p>
 

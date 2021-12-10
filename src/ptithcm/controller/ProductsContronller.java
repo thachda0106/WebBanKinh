@@ -191,7 +191,7 @@ public class ProductsContronller {
 	}
 	
 	@RequestMapping("/id={id}/quantity={sl}.htm")
-	public String addToCart(ModelMap model, HttpSession request, @PathVariable("id") int id, @PathVariable("sl") int sl ) {
+	public String addToCart(ModelMap model,HttpServletRequest ServletRequest  , HttpSession request, @PathVariable("id") int id, @PathVariable("sl") int sl ) {
 		int order_id = (Integer) request.getAttribute("od_user");
 		
 		Orders od = this.getOrder(order_id);
@@ -235,6 +235,13 @@ public class ProductsContronller {
 				session.close();
 			}
 		}
+		// 
+		int orderQuantity = 0;
+		List<LineItems> litems = this.getLineItemsOfOrder(order_id);
+		for (LineItems lineItems : litems) {
+			orderQuantity+= lineItems.getQuantity();
+		}
+		ServletRequest.getServletContext().setAttribute("orderQuantity", orderQuantity);
 		return "showproduct";
 	}
 	
@@ -328,6 +335,14 @@ public class ProductsContronller {
 		return list;
 	}
 	
+	public List<LineItems> getLineItemsOfOrder(int od_id){
+		Session session = factory.getCurrentSession();
+		String hql = "FROM LineItems as litem Where litem.orders.id =:od_id";
+		Query query = session.createQuery(hql);
+		query.setParameter("od_id", od_id);
+		List<LineItems> litems = query.list();
+		return litems;
+	}
 	public Integer insertLineitem(LineItems litem) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();		

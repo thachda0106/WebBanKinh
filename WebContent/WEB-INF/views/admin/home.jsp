@@ -121,6 +121,7 @@
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="resources/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> <span>${applicationScope.AdminName}</span> 
                             </a>
+                            <a href="/WebBanKinh/admin/logout.htm"><button class="btn btn-info" style="font-size: 16px; font-weight: 600; background-color: var(--primary-color);"> Đăng xuất</button></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
